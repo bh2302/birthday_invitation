@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,7 +27,7 @@
 
     h1 {
       font-size: 2rem;
-      color: #ff6b6b;
+      color: #f57c00;
     }
 
     p {
@@ -35,26 +35,25 @@
       color: #444;
     }
 
-    .buttons {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
+    .button-wrapper {
+      margin-top: 2rem;
     }
 
-    .buttons button {
-      background-color: #ff6b6b;
+    .rsvp-button {
+      background-color: #f57c00;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.8rem 1.6rem;
       color: white;
       border-radius: 12px;
       font-size: 1rem;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .buttons button:hover {
-      transform: scale(1.05);
+    .rsvp-button:hover {
+      background-color: #e65100;
     }
 
     @keyframes fadeIn {
@@ -66,35 +65,22 @@
         transform: translateY(0);
       }
     }
-
-    .response {
-      margin-top: 1rem;
-      font-weight: bold;
-      color: #555;
-    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>🎂 Du bist eingeladen!</h1>
-    <p>Am <strong>Samstag, 10. August 2025</strong> feiern wir meinen Geburtstag!<br>
-       Ort: <em>Gartenstraße 42, 12345 Berlin</em><br>
-       Uhrzeit: ab <strong>16:00 Uhr</strong><br><br>
-       Sag mir bitte Bescheid, ob du kommst!
+    <h1>🎉 Du bist eingeladen!</h1>
+    <p>
+      Am <strong>Samstag, 10. August 2025</strong> feiern wir meinen Geburtstag!<br>
+      📍 <em>Gartenstraße 42, 12345 Berlin</em><br>
+      🕓 Ab <strong>16:00 Uhr</strong><br><br>
+      Bitte gib Bescheid, ob du kommen kannst:
     </p>
-    <div class="buttons">
-      <button onclick="respond('🎉 Ich komme!')">Ich komme!</button>
-      <button onclick="respond('🤔 Vielleicht...')">Vielleicht…</button>
-      <button onclick="respond('🙁 Kann leider nicht')">Absagen</button>
+    <div class="button-wrapper">
+      <a class="rsvp-button" href="https://docs.google.com/forms/d/e/1FAIpQLSeY_i5okrRpzSm97Gcz92ZJyDh3Gf97xtTFMvYFovX6HiUZ6Q/viewform" target="_blank">
+        Jetzt antworten
+      </a>
     </div>
-    <div class="response" id="response"></div>
   </div>
-
-  <script>
-    function respond(message) {
-      const response = document.getElementById('response');
-      response.textContent = message;
-    }
-  </script>
 </body>
 </html>
