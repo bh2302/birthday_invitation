@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Geburtstagseinladung</title>
+  <script>
+  const sections = document.querySelectorAll('section');
+  let currentIndex = 0;
+
+  function scrollToNextSection() {
+    currentIndex = (currentIndex + 1) % sections.length;
+    sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Alle 5 Sekunden automatisch scrollen
+  setInterval(scrollToNextSection, 5000);
+</script>
+
   <style>
     * {
       margin: 0;
