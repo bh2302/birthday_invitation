@@ -2,68 +2,114 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Geburtstagseinladung</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-      padding: 2rem;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .card {
-      background: white;
-      border-radius: 24px;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      animation: fadeIn 1s ease-out;
+      padding: 2rem;
+      color: white;
+      transition: background 0.6s ease;
+    }
+
+    .one {
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+    }
+
+    .two {
+      background: linear-gradient(to right, #43cea2, #185a9d);
+    }
+
+    .three {
+      background: linear-gradient(to right, #654ea3, #eaafc8);
+      flex-direction: column;
+      color: #fff;
+    }
+
+    .four {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      flex-direction: column;
     }
 
     h1 {
-      font-size: 2rem;
-      color: #ff6b6b;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1rem;
-      color: #444;
+      font-size: 1.5rem;
     }
 
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .cta {
       margin-top: 2rem;
-      border-radius: 12px;
+      background: #fff;
+      color: #dd2476;
+      padding: 1rem 2rem;
+      border: none;
+      font-size: 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      } to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .cta:hover {
+      background: #ffe3ec;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🎉 Du bist eingeladen!</h1>
-    <p>
-      Am <strong>Samstag, 10. August 2025</strong> feiern wir meinen Geburtstag!<br>
-      📍 <em>Gartenstraße 42, 12345 Berlin</em><br>
-      🕓 Ab <strong>16:00 Uhr</strong><br><br>
-      Fülle bitte das Formular unten aus, um mir Bescheid zu geben:
-    </p>
 
-    <a href="./antwort/" class="rsvp-button">Jetzt antworten</a>
+  <section class="one">
+    <div>
+      <h1>🎉 Einladung zum Geburtstag 🎉</h1>
+      <p>Ich werde ein Jahr älter – und du bist eingeladen!</p>
+    </div>
+  </section>
 
-  </div>
+  <section class="two">
+    <div>
+      <h1>🥳 Und das möchte ich mit euch feiern!</h1>
+      <p>Lasst uns zusammen lachen, tanzen und anstoßen.</p>
+    </div>
+  </section>
+
+  <section class="three">
+    <div class="info-box">
+      <h1>📍 Party-Infos</h1>
+      <p><strong>Wann:</strong> Samstag, 10. August 2025, ab 18:00 Uhr</p>
+      <p><strong>Wo:</strong> Gartenstraße 123, 12345 Musterstadt</p>
+    </div>
+  </section>
+
+  <section class="four">
+    <div>
+      <h1>🎈 Wer nicht absagt, ist dabei!</h1>
+      <p>Ich zähl auf dich – gib mir einfach kurz Bescheid 😄</p>
+      <button class="cta" onclick="alert('Danke für dein Kommen! 🎉')">Ich bin dabei!</button>
+    </div>
+  </section>
+
 </body>
 </html>
