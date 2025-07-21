@@ -1,140 +1,197 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Geburtstagseinladung</title>
-
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Geburtstagseinladung – PowerPoint Style</title>
+<style>
   html, body {
-  height: 100vh;
-  margin: 0;
-  overflow-x: scroll; /* horizontal scroll erlauben */
-  overflow-y: hidden; /* vertikales scrollen verhindern */
-  scroll-snap-type: x mandatory; /* Snap an horizontaler Achse */
-  scroll-behavior: smooth;
-  font-family: 'Segoe UI', sans-serif;
-  white-space: nowrap; /* Verhindert Umbruch */
-}
+    margin: 0; padding: 0;
+    height: 100vh;
+    overflow: hidden; /* kein scrollen per Maus */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #111;
+    color: #fff;
+  }
 
-body {
-  display: flex;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-section {
-  scroll-snap-align: start;
-  flex: 0 0 100vw; /* Breite = 100% der Viewportbreite */
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  color: white;
-  white-space: normal; /* Textumbruch innerhalb der Sektion */
-}
+  /* Container für die Slides */
+  #slider {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
 
+  section {
+    flex: 0 0 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    user-select: none;
+  }
 
-    .one {
-      background: linear-gradient(to right, #ff6a00, #ee0979);
-    }
+  /* Verschiedene Slides Farben */
+  .one { background: linear-gradient(135deg, #1f4037, #99f2c8); color: #222; }
+  .two { background: linear-gradient(135deg, #f7971e, #ffd200); color: #222; }
+  .three { background: linear-gradient(135deg, #43cea2, #185a9d); }
+  .four { background: linear-gradient(135deg, #ff512f, #dd2476); }
 
-    .two {
-      background: linear-gradient(to right, #43cea2, #185a9d);
-    }
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  }
 
-    .three {
-      background: linear-gradient(to right, #654ea3, #eaafc8);
-      flex-direction: column;
-      color: #fff;
-    }
+  p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    text-align: center;
+  }
 
-    .four {
-      background: linear-gradient(to right, #ff512f, #dd2476);
-      flex-direction: column;
-    }
+  /* Navigation Buttons */
+  button.nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 10;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+  button.nav:hover {
+    background: rgba(255,255,255,0.5);
+  }
 
-    p {
-      font-size: 1.5rem;
-    }
+  #prev {
+    left: 1rem;
+  }
 
-    .info-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      backdrop-filter: blur(8px);
-    }
+  #next {
+    right: 1rem;
+  }
 
-    .cta {
-      margin-top: 2rem;
-      background: #fff;
-      color: #dd2476;
-      padding: 1rem 2rem;
-      border: none;
-      font-size: 1.2rem;
-      border-radius: 2rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+  /* Dots Navigation */
+  #dots {
+    position: fixed;
+    bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
 
-    .cta:hover {
-      background: #ffe3ec;
-    }
-  </style>
+  #dots button {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  #dots button.active {
+    background: #fff;
+  }
+
+</style>
 </head>
 <body>
 
+<div id="slider">
   <section class="one">
-    <div>
-      <h1>🎉 Einladung zum Geburtstag 🎉</h1>
-      <p>Ich werde ein Jahr älter – und du bist eingeladen!</p>
-    </div>
+    <h1>🎉 Einladung zum Geburtstag 🎉</h1>
+    <p>Ich werde ein Jahr älter – und du bist eingeladen!</p>
   </section>
 
   <section class="two">
-    <div>
-      <h1>🥳 Und das möchte ich mit euch feiern!</h1>
-      <p>Lasst uns zusammen lachen, tanzen und anstoßen.</p>
-    </div>
+    <h1>🥳 Und das möchte ich mit euch feiern!</h1>
+    <p>Lasst uns zusammen lachen, tanzen und anstoßen.</p>
   </section>
 
   <section class="three">
-    <div class="info-box">
-      <h1>📍 Party-Infos</h1>
-      <p><strong>Wann:</strong> Samstag, 10. August 2025, ab 18:00 Uhr</p>
-      <p><strong>Wo:</strong> Gartenstraße 123, 12345 Musterstadt</p>
-    </div>
+    <h1>📍 Party-Infos</h1>
+    <p><strong>Wann:</strong> Samstag, 10. August 2025, ab 18:00 Uhr</p>
+    <p><strong>Wo:</strong> Gartenstraße 123, 12345 Musterstadt</p>
   </section>
 
   <section class="four">
-    <div>
-      <h1>🎈 Wer nicht absagt, ist dabei!</h1>
-      <p>Ich zähl auf dich – gib mir einfach kurz Bescheid 😄</p>
-      <button class="cta" onclick="alert('Danke für dein Kommen! 🎉')">Ich bin dabei!</button>
-    </div>
+    <h1>🎈 Wer nicht absagt, ist dabei!</h1>
+    <p>Ich zähl auf dich – gib mir einfach kurz Bescheid 😄</p>
+    <button onclick="alert('Danke für dein Kommen! 🎉')">Ich bin dabei!</button>
   </section>
-  <script>
- const sections = document.querySelectorAll('section');
+</div>
+
+<!-- Navigation Buttons -->
+<button id="prev" class="nav" aria-label="Zurück">‹</button>
+<button id="next" class="nav" aria-label="Weiter">›</button>
+
+<!-- Dots -->
+<div id="dots"></div>
+
+<script>
+  const slider = document.getElementById('slider');
+  const sections = slider.querySelectorAll('section');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const dotsContainer = document.getElementById('dots');
+
   let currentIndex = 0;
 
-  function scrollToNextSection() {
-    currentIndex = (currentIndex + 1) % sections.length;
-    sections[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  // Dots erstellen
+  sections.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  function updateUI() {
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
   }
 
-  setInterval(scrollToNextSection, 5000);
+  function goToSlide(index) {
+    if (index < 0) index = sections.length - 1;
+    if (index >= sections.length) index = 0;
+    currentIndex = index;
+    slider.style.transform = `translateX(-${index * 100}vw)`;
+    updateUI();
+  }
+
+  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+  // Pfeiltasten-Steuerung
+  window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+    if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+  });
+
+  // Initial
+  updateUI();
+  goToSlide(0);
 </script>
+
 </body>
 </html>
