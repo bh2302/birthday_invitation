@@ -9,21 +9,28 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch; /* für iOS */
+        -webkit-overflow-scrolling: touch;
+        padding-left: 16px;
+        height: 914px;
+        gap: 16px;
       }
 
       .item {
         scroll-snap-align: start;
-        flex: 0 0 100%; /* Jede Seite nimmt 100% Breite ein */
-        height: 300px;
+        flex: 0 0 95%; /* Nur 85% der Breite -> nächste Karte sichtbar */
+        height: 914px;
         background-color: lightcoral;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
-        line-height: 300px;
-        font-size: 2rem;
-        border-right: 2px solid white;
+        line-height: 250px;
+        font-size: 1.5rem;
+        background-color: #ffc9d1;
       }
 
       body {
+        width: 412px;
+        height: 914px;
         margin: 0;
       }
       .wobble-hor-bottom {
@@ -125,13 +132,20 @@
           display: none;
         }
       }
+      .center {
+        align-content: center;
+      }
     </style>
   </head>
   <body>
     <div class="scroll-container">
-      <div class="item">Seite 1</div>
-      <div class="item" style="background-color: lightseagreen">Seite 2</div>
-      <div class="item" style="background-color: lightblue">Seite 3</div>
+      <div class="item">
+        <div class="center">
+          <span>Hello</span>
+        </div>
+      </div>
+      <div class="item wobble-hor-bottom" style="">Seite 2</div>
+      <div class="item" style="">Seite 3</div>
     </div>
   </body>
 </html>
